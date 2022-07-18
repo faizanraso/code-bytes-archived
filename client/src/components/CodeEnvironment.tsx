@@ -11,6 +11,9 @@ import { rust } from "@codemirror/lang-rust";
 
 function CodeEnvironment() {
   const [lang, setLang] = React.useState(javascript({ jsx: true }));
+  const [status, setStatus] = React.useState(null);
+  const [memory, setMemory] = React.useState(null);
+  const [time, setTime] = React.useState(null);
 
   const onChange = React.useCallback((value: any, viewUpdate: any) => {
     console.log("value:", value);
@@ -74,6 +77,11 @@ function CodeEnvironment() {
               cols={33}
               className="my-3 block p-2.5 w-full text-sm text-white rounded-lg bg-[#282c34] border border-[#2c313a]"
             />
+          </div>
+          <div className="execution-stats-div">
+            <p className="text-sm text-white my-2">Status:{' '} <span className="ml-3 font-semibold px-2 py-1 rounded-md bg-gray-300 text-black">{status}</span></p>
+            <p className="text-sm text-white my-2">Memory:{' '} <span className="ml-3 font-semibold px-2 py-1 rounded-md bg-gray-300 text-black">{memory}</span></p>
+            <p className="text-sm text-white my-2">Time:{' '} <span className="ml-3 font-semibold px-2 py-1 rounded-md bg-gray-300 text-black">{time}</span></p>
           </div>
         </div>
       </div>
